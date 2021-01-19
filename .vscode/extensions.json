@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "sonarsource.sonarlint-vscode",
+    "ms-vsliveshare.vsliveshare",
+    "esbenp.prettier-vscode"
+  ]
+}
