@@ -22,7 +22,7 @@ jobs:
           PROJECT_FILE_PATH: SimpleInjector.Extensions.ScopedDependencyFactory/SimpleInjector.Extensions.ScopedDependencyFactory.csproj
 
           # NuGet package id, used for version detection & defaults to project name
-          PACKAGE_NAME: SimpleInjector.Extensions.ScopedDependencyFactory.sln
+          PACKAGE_NAME: dt.SimpleInjector.Extensions.ScopedDependencyFactory
 
           # API key to authenticate with NuGet server
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
