@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <PackageId>SimpleInjector.Extensions.ScopedDependencyFactory</PackageId>
+    <PackageId>dt.SimpleInjector.Extensions.ScopedDependencyFactory</PackageId>
     <Version>1.0.0</Version>
     <Authors>tobuto</Authors>
     <Company>devterm IT Solutions</Company>
@@ -12,5 +12,4 @@
   <ItemGroup>
     <PackageReference Include="SimpleInjector" Version="5.2.1" />
   </ItemGroup>
-
 </Project>
