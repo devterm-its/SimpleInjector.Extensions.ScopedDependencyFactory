@@ -15,8 +15,22 @@ jobs:
         with:
           # Disabling shallow clone is recommended for improving relevancy of reporting
           fetch-depth: 0
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "3.1.x"
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 11
       - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
+        run: |
+          dotnet tool install --global dotnet-sonarscanner
+          dotnet build-server shutdown
+          dotnet sonarscanner begin /k:"devterm-its_SimpleInjector.Extensions.ScopedDependencyFactory" /o:"devterm-its" /d:sonar.login="$SONAR_TOKEN" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="SimpleInjector.Extensions.ScopedDependencyFactory.Test/coverage.opencover.xml"
+          dotnet build SimpleInjector.Extensions.ScopedDependencyFactory.sln --configuration Release
+          dotnet test SimpleInjector.Extensions.ScopedDependencyFactory.sln --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=coverage
+          ls
+          dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          DOTNET_CLI_TELEMETRY_OPTOUT: true
